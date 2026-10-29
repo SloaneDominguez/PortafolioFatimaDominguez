@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fátima Domínguez | Portafolio</title>
+  <meta name="description" content="Portafolio de Fátima Domínguez: proyectos, experiencia y certificaciones.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Íconos reutilizables (sprite SVG) -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="7" r="4"/>
+      <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
+    </symbol>
+    <symbol id="i-code-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/>
+      <path d="M14 2v5h5"/>
+      <path d="m10 11-2 2 2 2M14 11l2 2-2 2"/>
+    </symbol>
+    <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="9" r="6"/>
+      <path d="m9.2 9 2 2 3.6-3.8"/>
+      <path d="M8.5 14.5 7 22l5-3 5 3-1.5-7.5"/>
+    </symbol>
+    <symbol id="i-certificate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2.5" y="3.5" width="19" height="13" rx="2"/>
+      <path d="M6.5 7.5h11M6.5 10.5h6"/>
+      <circle cx="16.5" cy="13" r="2"/>
+      <path d="m15.5 15-1 6 2-1.2 2 1.2-1-6"/>
+    </symbol>
+    <symbol id="i-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    </symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24">
+      <rect x="1" y="1" width="22" height="22" rx="3" fill="currentColor"/>
+      <rect x="5" y="9.5" width="2.8" height="9" fill="#fff"/>
+      <circle cx="6.4" cy="6.3" r="1.6" fill="#fff"/>
+      <path fill="#fff" d="M10.2 9.5h2.7v1.2c.5-.9 1.5-1.4 2.7-1.4 2.6 0 3.2 1.7 3.2 3.9v5.3h-2.8v-4.7c0-1.1-.2-1.9-1.4-1.9s-1.6.9-1.6 2v4.6h-2.8z"/>
+    </symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/>
+      <path d="M14 2v5h5"/>
+      <path d="M12 10.5v6M9.5 14l2.5 2.5 2.5-2.5M9 19.5h6"/>
+    </symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m9 5 7 7-7 7"/>
+    </symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 4v16M5 13l7 7 7-7"/>
+    </symbol>
+    <symbol id="i-ribbon" viewBox="0 0 24 24">
+      <path fill="currentColor" d="m6.5 14.5-3 7.5 4.5-1 2 2.2 1.2-7zM17.5 14.5l3 7.5-4.5-1-2 2.2-1.2-7z"/>
+      <circle cx="12" cy="9" r="8" fill="currentColor"/>
+      <circle cx="12" cy="9" r="5.8" fill="none" stroke="var(--ribbon-detail, #c58ad6)" stroke-width="1"/>
+      <path fill="var(--ribbon-detail, #c58ad6)" d="m12 5.2 1.2 2.5 2.7.4-2 1.9.5 2.7-2.4-1.3-2.4 1.3.5-2.7-2-1.9 2.7-.4z"/>
+    </symbol>
+  </svg>
+
+  <!-- ENCABEZADO / NAVEGACIÓN -->
+  <header class="navbar">
+    <nav class="navbar__menu" aria-label="Navegación principal">
+      <a class="navbar__link" href="#sobre-mi">
+        <svg class="navbar__icon" aria-hidden="true"><use href="#i-user"/></svg>
+        <span>Sobre mí</span>
+      </a>
+      <a class="navbar__link" href="#proyectos">
+        <svg class="navbar__icon" aria-hidden="true"><use href="#i-code-file"/></svg>
+        <span>Proyectos</span>
+      </a>
+      <a class="navbar__link" href="#experiencia">
+        <svg class="navbar__icon" aria-hidden="true"><use href="#i-award"/></svg>
+        <span>Experiencia</span>
+      </a>
+      <a class="navbar__link" href="#certificaciones">
+        <svg class="navbar__icon" aria-hidden="true"><use href="#i-certificate"/></svg>
+        <span>Certificaciones</span>
+      </a>
+    </nav>
+
+    <div class="navbar__social">
+      <a class="navbar__social-link" href="https://github.com/TU-USUARIO" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <svg aria-hidden="true"><use href="#i-github"/></svg>
+      </a>
+      <a class="navbar__social-link" href="https://www.linkedin.com/in/TU-USUARIO" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg aria-hidden="true"><use href="#i-linkedin"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 1. INICIO -->
+    <section class="section hero" id="inicio" aria-labelledby="hero-titulo">
+      <div class="hero__content">
+        <div class="hero__text">
+          <p class="hero__greeting">¡Hola, soy Fátima Domínguez!</p>
+          <h1 class="hero__title" id="hero-titulo">Bienvenid@ a<br>mi portafolio</h1>
+        </div>
+        <div class="hero__media">
+          <img class="hero__image" src="assets/img/hero-3d.png" alt="Ilustración 3D de una ventana de código con una taza de café" width="640" height="560">
+        </div>
+      </div>
+
+      <a class="explore" href="#sobre-mi">
+        <span>Explorar</span>
+        <svg aria-hidden="true"><use href="#i-arrow-down"/></svg>
+      </a>
+    </section>
+
+    <!-- 2. SOBRE MÍ -->
+    <section class="section about" id="sobre-mi" aria-labelledby="sobre-mi-titulo">
+      <h2 class="section__title" id="sobre-mi-titulo">Sobre mí</h2>
+
+      <div class="about__grid">
+        <!-- Tu foto: agrega <img src="assets/img/foto-fatima.jpg" alt="Fátima Domínguez"> dentro de esta tarjeta -->
+        <div class="card card--photo"></div>
+
+        <div class="about__body">
+          <p class="about__text">
+            Soy estudiante de Ingeniería en Desarrollo y Gestión de Software y actualmente curso el
+            onceavo cuatrimestre. También soy instructora en Tecnochicas.
+            <!-- COMPLETAR: 1–2 frases sobre lo que te apasiona, qué te gusta construir y qué buscas (prácticas, empleo, proyectos). -->
+            [Escribe aquí qué te apasiona y qué tipo de proyectos te gusta construir.]
+          </p>
+
+          <dl class="about__facts">
+            <div class="card fact">
+              <dt>Carrera</dt>
+              <dd>Ingeniería en Desarrollo y Gestión de Software</dd>
+            </div>
+            <div class="card fact">
+              <dt>Cuatrimestre</dt>
+              <dd>Onceavo</dd>
+            </div>
+            <div class="card fact">
+              <dt>Instructora</dt>
+              <dd>Tecnochicas</dd>
+            </div>
+            <!-- COMPLETAR los tres datos siguientes (o cámbialos por otros) -->
+            <div class="card fact">
+              <dt>Universidad</dt>
+              <dd>[Nombre de tu universidad]</dd>
+            </div>
+            <div class="card fact">
+              <dt>Tecnologías</dt>
+              <dd>[Ej. HTML, CSS, JavaScript, Flutter, Node.js]</dd>
+            </div>
+            <div class="card fact">
+              <dt>Idiomas</dt>
+              <dd>[Ej. Español nativo, Inglés intermedio]</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PROYECTOS -->
+    <section class="section" id="proyectos" aria-labelledby="proyectos-titulo">
+      <h2 class="section__title" id="proyectos-titulo">Proyectos</h2>
+
+      <div class="carousel">
+        <div class="carousel__viewport" id="proyectos-carrusel" tabindex="0" aria-label="Lista de proyectos">
+          <ul class="carousel__track">
+            <!-- Cada <li> es un proyecto. Duplica este bloque para agregar más. -->
+            <li class="card card--project"></li>
+            <li class="card card--project"></li>
+            <li class="card card--project"></li>
+            <li class="card card--project"></li>
+            <li class="card card--project"></li>
+            <li class="card card--project"></li>
+          </ul>
+        </div>
+        <button class="carousel__next" type="button" aria-label="Ver siguientes proyectos" aria-controls="proyectos-carrusel">
+          <svg aria-hidden="true"><use href="#i-chevron-right"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. EXPERIENCIA -->
+    <section class="section" id="experiencia" aria-labelledby="experiencia-titulo">
+      <div class="section__head">
+        <h2 class="section__title" id="experiencia-titulo">Experiencia</h2>
+        <a class="btn-cv" href="assets/CV-Fatima-Dominguez.pdf" download>
+          <svg aria-hidden="true"><use href="#i-download"/></svg>
+          <span>Descargar mi CV</span>
+        </a>
+      </div>
+
+      <ul class="cards-row">
+        <li class="card card--experience"></li>
+        <li class="card card--experience"></li>
+        <li class="card card--experience"></li>
+      </ul>
+    </section>
+
+    <!-- 5. CERTIFICACIONES -->
+    <section class="section section--certs" id="certificaciones" aria-labelledby="certificaciones-titulo">
+      <div class="section__head">
+        <h2 class="section__title" id="certificaciones-titulo">Certificaciones</h2>
+        <a class="btn-cv" href="assets/CV-Fatima-Dominguez.pdf" download>
+          <svg aria-hidden="true"><use href="#i-download"/></svg>
+          <span>Descargar mi CV</span>
+        </a>
+      </div>
+
+      <ul class="certs">
+        <li class="card card--cert">
+          <svg class="card__ribbon" aria-hidden="true"><use href="#i-ribbon"/></svg>
+        </li>
+        <li class="card card--cert">
+          <svg class="card__ribbon" aria-hidden="true"><use href="#i-ribbon"/></svg>
+        </li>
+        <li class="card card--cert">
+          <svg class="card__ribbon" aria-hidden="true"><use href="#i-ribbon"/></svg>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+<script src="js/script.js" defer></script>
+</body>
+</html>
