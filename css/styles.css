@@ -42,6 +42,7 @@
 html {
   scroll-behavior: smooth;
   scroll-snap-type: y proximity;
+  scrollbar-gutter: stable;   /* evita saltos de diseño al abrir el modal */
 }
 
 body {
@@ -383,6 +384,265 @@ button {
   height: 55%;
 }
 
+/* ---------- 7b. Tarjetas con imagen + título (proyectos y certificados) ---------- */
+.card__open {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: none;
+  color: var(--white);
+  font: inherit;
+  text-align: left;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Degradado oscuro para que el título siempre se lea */
+.card__open::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 62%;
+  background: linear-gradient(
+    to top,
+    rgba(45, 0, 62, 0.9) 0%,
+    rgba(45, 0, 62, 0.55) 45%,
+    rgba(45, 0, 62, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.card__title {
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 0 0;
+  padding: clamp(0.9rem, 1.5vw, 1.4rem);
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.card__title::after {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.78em;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.card--project .card__title::after {
+  content: "Ver detalles →";
+}
+
+.card--cert .card__title::after {
+  content: "Ver certificado →";
+}
+
+@media (hover: hover) {
+  .card__open:hover .card__img {
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card__img {
+    transition: none;
+  }
+}
+
+.card--cert .card__ribbon {
+  z-index: 2;
+}
+
+/* ---------- 7c. Modal (proyectos y certificados) ---------- */
+.modal {
+  width: min(960px, calc(100vw - 2rem));
+  max-height: calc(100svh - 2rem);
+  padding: 0;
+  border: 0;
+  border-radius: clamp(20px, 2.4vw, 32px);
+  background: var(--blush);
+  color: #4a0063;
+  box-shadow: 0 30px 80px rgba(40, 0, 60, 0.45);
+  overflow: hidden;
+}
+
+.modal::backdrop {
+  background: rgba(45, 0, 62, 0.6);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.modal__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  max-height: calc(100svh - 2rem);
+  overflow-y: auto;
+}
+
+.modal__media {
+  position: relative;
+  min-height: 300px;
+  background: var(--gradient);
+}
+
+.modal__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: clamp(1.5rem, 3vw, 2.6rem);
+}
+
+.modal__title {
+  margin: 0;
+  padding-right: 2.5rem;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--purple-dark);
+}
+
+.modal__text {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+  line-height: 1.7;
+}
+
+.modal__meta {
+  margin: 0;
+  opacity: 0.8;
+}
+
+.modal__subtitle {
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chips li {
+  padding: 0.35rem 0.85rem;
+  border: 1px solid rgba(120, 0, 154, 0.25);
+  border-radius: 999px;
+  background: rgba(120, 0, 154, 0.1);
+  color: var(--purple-dark);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.modal__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.modal__close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--purple-dark);
+  color: var(--white);
+  box-shadow: 0 6px 16px rgba(60, 0, 80, 0.3);
+  cursor: pointer;
+  transition: scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal__close:hover {
+  scale: 1.1;
+}
+
+.modal__close svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Variante: certificado (imagen completa arriba, datos abajo) */
+.modal.modal--cert {
+  width: min(900px, calc(100vw - 2rem));
+}
+
+.modal--cert .modal__inner {
+  grid-template-columns: 1fr;
+}
+
+.modal--cert .modal__media {
+  min-height: 0;
+  padding: 1rem;
+  background: var(--white);
+}
+
+.modal--cert .modal__media img {
+  position: static;
+  width: 100%;
+  height: auto;
+  max-height: 62svh;
+  object-fit: contain;
+}
+
+/* Variante: sin imagen disponible */
+.modal--noimg .modal__inner {
+  grid-template-columns: 1fr;
+}
+
+.modal--noimg .modal__media {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .modal__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .modal__media {
+    min-height: 0;
+    height: min(38svh, 280px);
+  }
+
+  .modal.modal--cert .modal__media {
+    height: auto;
+  }
+}
+
 /* ---------- 8. Experiencia ---------- */
 .cards-row {
   display: flex;
@@ -392,8 +652,74 @@ button {
 }
 
 .card--experience {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   flex: 0 1 18.6vw;
-  aspect-ratio: 270 / 322;
+  aspect-ratio: 270 / 322;            /* crece si el texto necesita más espacio */
+  padding: clamp(1.1rem, 1.8vw, 1.7rem);
+  /* Fondo más claro que el cristal base para que el texto oscuro siempre se lea */
+  background: rgba(255, 255, 255, 0.62);
+  color: #4a0063;
+}
+
+.exp__period {
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  background: var(--purple-dark);
+  color: var(--white);
+  font-size: clamp(0.72rem, 0.95vw, 0.85rem);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.exp__role {
+  margin: 1rem 0 0;
+  font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--purple-dark);
+}
+
+.exp__org {
+  margin-top: 0.25rem;
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  font-weight: 600;
+}
+
+.exp__list {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+  font-size: clamp(0.82rem, 1.05vw, 0.95rem);
+  line-height: 1.5;
+}
+
+.exp__list li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.exp__list li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--lilac);
+}
+
+/* Entre tablet y laptop: tarjetas un poco más anchas y menos separación */
+@media (min-width: 821px) and (max-width: 1100px) {
+  .cards-row {
+    gap: 3vw;
+  }
+
+  .card--experience {
+    flex-basis: 27vw;
+  }
 }
 
 /* ---------- 9. Certificaciones ---------- */
