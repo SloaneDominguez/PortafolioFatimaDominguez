@@ -353,9 +353,124 @@
     sync();
   }
 
+  /* ==========================================================
+     6. MODAL: detalle de proyectos y certificados (<dialog> nativo)
+        - Esc, clic fuera o botón ✕ lo cierran.
+        - El contenido sale del <template> de cada tarjeta.
+     ========================================================== */
+  function initModal() {
+    const dialog = $('#modal');
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+
+    const inner = $('.modal__inner', dialog);
+    const media = $('.modal__media', dialog);
+    const body = $('.modal__body', dialog);
+    const closeBtn = $('.modal__close', dialog);
+
+    /* Si una imagen no existe, la ocultamos para que quede solo el título */
+    $$('.card__img').forEach((img) => {
+      const hide = () => (img.style.visibility = 'hidden');
+      if (img.complete && img.naturalWidth === 0) hide();
+      img.addEventListener('error', hide);
+    });
+
+    let opener = null;
+    let closing = false;
+
+    function open(button) {
+      const card = button.closest('.card');
+      const tpl = $('template', card);
+      const thumb = $('.card__img', button);
+      const hasImg = thumb && thumb.style.visibility !== 'hidden';
+      opener = button;
+
+      media.replaceChildren();
+      if (hasImg) {
+        const img = new Image();
+        img.src = thumb.currentSrc || thumb.src;
+        img.alt = thumb.alt;
+        media.append(img);
+      }
+
+      body.replaceChildren(tpl ? tpl.content.cloneNode(true) : document.createDocumentFragment());
+      dialog.classList.toggle('modal--cert', card.classList.contains('card--cert'));
+      dialog.classList.toggle('modal--noimg', !hasImg);
+
+      const title = $('.modal__title', body);
+      if (title) {
+        title.id = 'modal-title';
+        dialog.setAttribute('aria-labelledby', 'modal-title');
+      }
+
+      document.documentElement.style.overflow = 'hidden'; // bloquea el scroll de fondo
+      dialog.showModal();
+      inner.scrollTop = 0;
+
+      if (!reduceMotion) {
+        dialog.animate(
+          [
+            { opacity: 0, transform: 'translateY(24px) scale(0.96)' },
+            { opacity: 1, transform: 'none' },
+          ],
+          { duration: 350, easing: EASE_OUT }
+        );
+        try {
+          dialog.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 350, pseudoElement: '::backdrop' });
+        } catch (_) { /* navegadores sin soporte: se abre sin animar el fondo */ }
+      }
+    }
+
+    function close() {
+      if (!dialog.open || closing) return;
+      if (reduceMotion) return dialog.close();
+
+      closing = true;
+      const a = dialog.animate(
+        [
+          { opacity: 1, transform: 'none' },
+          { opacity: 0, transform: 'translateY(16px) scale(0.97)' },
+        ],
+        { duration: 220, easing: 'ease-in', fill: 'forwards' }
+      );
+      let b = null;
+      try {
+        b = dialog.animate([{ opacity: 1 }, { opacity: 0 }], {
+          duration: 220,
+          pseudoElement: '::backdrop',
+          fill: 'forwards',
+        });
+      } catch (_) { /* sin soporte */ }
+
+      a.onfinish = () => {
+        dialog.close();
+        a.cancel();
+        if (b) b.cancel();
+        closing = false;
+      };
+    }
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.card__open');
+      if (btn) open(btn);
+    });
+    closeBtn.addEventListener('click', close);
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) close(); // clic en el fondo oscuro
+    });
+    dialog.addEventListener('cancel', (e) => {
+      e.preventDefault(); // Esc: cerramos con animación
+      close();
+    });
+    dialog.addEventListener('close', () => {
+      document.documentElement.style.overflow = '';
+      if (opener) opener.focus({ preventScroll: true });
+    });
+  }
+
   /* ---------- Arranque ---------- */
   initNav();
   initCarousel();
+  initModal();
 
   if (!reduceMotion) {
     initHero();

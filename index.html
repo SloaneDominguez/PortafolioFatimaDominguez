@@ -55,6 +55,9 @@
     <symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 4v16M5 13l7 7 7-7"/>
     </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 6l12 12M18 6 6 18"/>
+    </symbol>
     <symbol id="i-ribbon" viewBox="0 0 24 24">
       <path fill="currentColor" d="m6.5 14.5-3 7.5 4.5-1 2 2.2 1.2-7zM17.5 14.5l3 7.5-4.5-1-2 2.2-1.2-7z"/>
       <circle cx="12" cy="9" r="8" fill="currentColor"/>
@@ -85,10 +88,10 @@
     </nav>
 
     <div class="navbar__social">
-      <a class="navbar__social-link" href="https://github.com/TU-USUARIO" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <a class="navbar__social-link" href="https://github.com/SloaneDominguez" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
         <svg aria-hidden="true"><use href="#i-github"/></svg>
       </a>
-      <a class="navbar__social-link" href="https://www.linkedin.com/in/TU-USUARIO" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <a class="navbar__social-link" href="https://www.linkedin.com/in/fatimadominguezb?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
         <svg aria-hidden="true"><use href="#i-linkedin"/></svg>
       </a>
     </div>
@@ -120,9 +123,9 @@
 
       <div class="about__grid">
         <div class="card card--photo">
-          <img src="assets/img/fotografia.PNG" alt="Fátima Domínguez">
+          <img src="assets/img/Fotografia.PNG" alt="Fátima Domínguez">
         </div>
-        
+
         <div class="about__body">
           <p class="about__text">
              Soy estudiante de Ingeniería en Desarrollo y Gestión de Software y actualmente curso el onceavo cuatrimestre. También soy instructora en Tecnochicas. Me apasiona transformar ideas en aplicaciones multiplataforma y soluciones digitales escalables utilizando herramientas como Flutter, Firebase y Python. Actualmente busco oportunidades profesionales y proyectos donde pueda aplicar mi enfoque analítico para crear software de alto impacto, mientras sigo impulsando la participación de más mujeres en el ecosistema STEM.
@@ -141,10 +144,9 @@
               <dt>Instructora</dt>
               <dd>Tecnochicas</dd>
             </div>
-            <!-- COMPLETAR los tres datos siguientes (o cámbialos por otros) -->
             <div class="card fact">
               <dt>Universidad</dt>
-              <dd>Universidad Tecnológica del Valle del Mequital</dd>
+              <dd>Universidad Tecnológica del Valle del Mezquital</dd>
             </div>
             <div class="card fact">
               <dt>Tecnologías</dt>
@@ -159,20 +161,107 @@
       </div>
     </section>
 
-    <!-- 3. PROYECTOS -->
+    <!-- 3. PROYECTOS
+         Cada <li> es un proyecto: la tarjeta muestra imagen + título y el
+         <template> guarda lo que aparece en el modal al hacer clic.
+         Para agregar uno nuevo, copia un <li> completo y cambia sus datos. -->
     <section class="section" id="proyectos" aria-labelledby="proyectos-titulo">
       <h2 class="section__title" id="proyectos-titulo">Proyectos</h2>
 
       <div class="carousel">
         <div class="carousel__viewport" id="proyectos-carrusel" tabindex="0" aria-label="Lista de proyectos">
           <ul class="carousel__track">
-            <!-- Cada <li> es un proyecto. Duplica este bloque para agregar más. -->
-            <li class="card card--project"></li>
-            <li class="card card--project"></li>
-            <li class="card card--project"></li>
-            <li class="card card--project"></li>
-            <li class="card card--project"></li>
-            <li class="card card--project"></li>
+
+            <!-- Proyecto 1 -->
+            <li class="card card--project">
+              <button class="card__open" type="button" aria-haspopup="dialog">
+                <img class="card__img" src="assets/img/proyectos/miauladigital.png" alt="Captura de pantalla de Mi Aula Digital" loading="lazy">
+                <span class="card__title">Mi Aula Digital</span>
+              </button>
+              <template>
+                <h3 class="modal__title">Mi Aula Digital</h3>
+                <p class="modal__text">
+                  Sistema web para una Escuela Primaria que fortalece la comunicación entre la dirección escolar,
+                  los docentes y los padres de familia. Sustituye el registro manual de calificaciones, incidencias y
+                  avisos por una plataforma centralizada, segura y de fácil acceso. Proyecto en equipo de siete integrantes.
+                </p>
+                <h4 class="modal__subtitle">Tecnologías</h4>
+                <ul class="chips">
+                  <li>PHP</li>
+                  <li>Arquitectura MVC</li>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>Git y GitHub</li>
+                </ul>
+              </template>
+            </li>
+
+            <!-- Proyecto 2 -->
+            <li class="card card--project">
+              <button class="card__open" type="button" aria-haspopup="dialog">
+                <img class="card__img" src="assets/img/proyectos/IconoPronto.png" alt="Captura de pantalla de la app Pronto" loading="lazy">
+                <span class="card__title">Pronto</span>
+              </button>
+              <template>
+                <h3 class="modal__title">Pronto</h3>
+                <p class="modal__text">
+                  App para emprendedores que permite gestionar inventario, ventas y la agenda de entregas.
+                </p>
+                <h4 class="modal__subtitle">Tecnologías</h4>
+                <ul class="chips">
+                  <li>Flutter</li>
+                  <li>Dart</li>
+                  <li>Firebase</li>
+                  <li>Inicio de sesión con Google</li>
+                </ul>
+              </template>
+            </li>
+
+            <!-- Proyecto 3 -->
+            <li class="card card--project">
+              <button class="card__open" type="button" aria-haspopup="dialog">
+                <img class="card__img" src="assets/img/proyectos/checklistcfe.jpeg" alt="Vista de la Checklist CFE" loading="lazy">
+                <span class="card__title">Checklist CFE</span>
+              </button>
+              <template>
+                <h3 class="modal__title">Checklist CFE</h3>
+                <p class="modal__text">
+                  Aplicación movil para la CFE que permite valorar las características de un vehículo cada vez que regresa de una salida, y lleva el control de quién lo utilizó y de las incidencias reportadas.
+                </p>
+                <h4 class="modal__subtitle">Tecnologías</h4>
+                <ul class="chips">
+                  <li>Node.js</li>
+                  <li>Flutter</li>
+                  <li>Dart</li>
+                  <li>API Rest</li>
+                </ul>
+              </template>
+            </li>
+
+            <!-- Proyecto 4 -->
+            <li class="card card--project">
+              <button class="card__open" type="button" aria-haspopup="dialog">
+                <img class="card__img" src="assets/img/proyectos/cafeteriavalkyria.jpeg" alt="Captura de pantalla del sistema de pedidos de la cafetería" loading="lazy">
+                <span class="card__title">Cafetería Valkyria</span>
+              </button>
+              <template>
+                <h3 class="modal__title">Cafetería Valkyria</h3>
+                <p class="modal__text">
+                  Página web para levantar pedidos de una cafetería, con pago únicamente en efectivo. Incluye un panel
+                  de administración para modificar el menú, realizar la apertura y el cierre de caja y consultar los pedidos.
+                </p>
+                <h4 class="modal__subtitle">Tecnologías</h4>
+                <ul class="chips">
+                  <!-- COMPLETAR con las tecnologías que usaste -->
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>PHP</li>
+                  <li>MySQL</li>
+                </ul>
+              </template>
+            </li>
           </ul>
         </div>
         <button class="carousel__next" type="button" aria-label="Ver siguientes proyectos" aria-controls="proyectos-carrusel">
@@ -190,38 +279,115 @@
           <span>Descargar mi CV</span>
         </a>
       </div>
-
+ 
+      <!-- Cada <li> es una experiencia. Copia un bloque completo para agregar otra. -->
       <ul class="cards-row">
-        <li class="card card--experience"></li>
-        <li class="card card--experience"></li>
-        <li class="card card--experience"></li>
+ 
+        <li class="card card--experience">
+          <span class="exp__period">Actualidad</span>
+          <h3 class="exp__role">Instructora</h3>
+          <p class="exp__org">Tecnochicas</p>
+          <ul class="exp__list">
+            <!-- COMPLETAR: 2 o 3 puntos cortos (qué enseñas, a quién, logros) -->
+            <li>Creacion de videojuegos con Scratch, Codear Bots con Python y Electronica Basica</li>
+            <li>Enseñanza de programación básica a niñas y jóvenes de 12 a 17 años</li>
+            <li>Desarrollo de proyectos colaborativos en entornos de aprendizaje</li>
+          </ul>
+        </li>
+ 
+        <li class="card card--experience">
+          <span class="exp__period">Enero 2025 – Mayo 2026</span>
+          <h3 class="exp__role">Free Lancer</h3>
+          <p class="exp__org"></p>
+          <ul class="exp__list">
+            <li>Full Stack Developer</li>
+            <li>Desarrollo de aplicaciones web con HTML, CSS, JavaScript, PHP y MySQL</li>
+            <li>Un sistema web para la gestión de pedidos de una cafetería</li>
+          </ul>
+        </li>
+ 
+        <li class="card card--experience">
+          <span class="exp__period">Mayo 2025 – Agosto 2025</span>
+          <h3 class="exp__role">Desarrolladora Móvil y Mantenimiento correctivo de Dispositivos eléctricos</h3>
+          <p class="exp__org">Comisión Federal de Electricidad CFE</p>
+          <ul class="exp__list">
+            <li>Desarrollo de aplicaciones móviles para la gestión de mantenimiento de dispositivos y Mantenimiento correctivo a dispositivos eléctricos</li>
+            <li>Tecnologías: Android Studio, Flutter, Dart, JavaScript, MySQL, Node.js</li>
+            <li>Implementación de un sistema de seguimiento de flotilla vehicular</li>
+          </ul>
+        </li>
+ 
       </ul>
     </section>
 
-    <!-- 5. CERTIFICACIONES -->
+    <!-- 5. CERTIFICACIONES
+         La tarjeta muestra la imagen del certificado + su nombre.
+         Al hacer clic se abre el certificado en grande (modal). -->
     <section class="section section--certs" id="certificaciones" aria-labelledby="certificaciones-titulo">
       <div class="section__head">
         <h2 class="section__title" id="certificaciones-titulo">Certificaciones</h2>
-        <a class="btn-cv" href="assets/CV-Fatima-Dominguez.pdf" download>
+        <a class="btn-cv" href="assets/CV_Fatima_Arlet_Dominguez_Barron.pdf" download>
           <svg aria-hidden="true"><use href="#i-download"/></svg>
           <span>Descargar mi CV</span>
         </a>
       </div>
 
       <ul class="certs">
+
+        <!-- Certificación 1 -->
         <li class="card card--cert">
+          <button class="card__open" type="button" aria-haspopup="dialog">
+            <img class="card__img" src="assets/certificados/certificado-1.png" alt="Certificado: Nombre de la certificación 1" loading="lazy">
+            <span class="card__title">Java Fundamentals</span>
+          </button>
+          <template>
+            <h3 class="modal__title">Java Fundamentals</h3>
+            <p class="modal__meta">Emitido por Oracle Academy · 2024</p>
+          </template>
           <svg class="card__ribbon" aria-hidden="true"><use href="#i-ribbon"/></svg>
         </li>
+
+        <!-- Certificación 2 -->
         <li class="card card--cert">
+          <button class="card__open" type="button" aria-haspopup="dialog">
+            <img class="card__img" src="assets/certificados/certificado-2.png" alt="Certificado: Nombre de la certificación 2" loading="lazy">
+            <span class="card__title">Junior Cybersecurity Analyst Career Path</span>
+          </button>
+          <template>
+            <h3 class="modal__title">Junior Cybersecurity Analyst Career Path</h3>
+            <p class="modal__meta">Emitido por Cisco Networking Academy · 2025</p>
+          </template>
           <svg class="card__ribbon" aria-hidden="true"><use href="#i-ribbon"/></svg>
         </li>
+
+        <!-- Certificación 3 -->
         <li class="card card--cert">
+          <button class="card__open" type="button" aria-haspopup="dialog">
+            <img class="card__img" src="assets/certificados/certificado-3.png" alt="Certificado: Nombre de la certificación 3" loading="lazy">
+            <span class="card__title">Operating Systems Basics</span>
+          </button>
+          <template>
+            <h3 class="modal__title">Operating Systems Basics</h3>
+            <p class="modal__meta">Emitido por Cisco Networking Academy · 2024</p>
+          </template>
           <svg class="card__ribbon" aria-hidden="true"><use href="#i-ribbon"/></svg>
         </li>
       </ul>
     </section>
 
   </main>
+
+  <!-- MODAL (lo comparten proyectos y certificaciones; el contenido lo llena el JS) -->
+  <dialog class="modal" id="modal" aria-label="Detalle">
+    <button class="modal__close" type="button" aria-label="Cerrar">
+      <svg aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+    <div class="modal__inner">
+      <div class="modal__media"></div>
+      <div class="modal__body"></div>
+    </div>
+  </dialog>
+
 <script src="js/script.js" defer></script>
 </body>
 </html>
